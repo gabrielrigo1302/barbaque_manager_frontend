@@ -1,0 +1,1 @@
+# barbaque_manager_frontend
