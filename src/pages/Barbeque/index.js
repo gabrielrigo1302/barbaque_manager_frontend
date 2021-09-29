@@ -14,17 +14,24 @@ export default function Profile() {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    api.get(`barbeque/${userId}`, {}).then(response => {
+    api.get(`barbeque/${userId}`).then(response => {
       setBarbeques(response.data.barbeque);
     })
   }, [userId]);
 
   async function handleDeleteIncident(id) {
     try {
-      await api.delete(`barbeque/${id}`, {});
+      await api.delete(`barbeque/${id}`);
+      // const response = await api.get(`person/${id}`)
+
+      // response.people.map(async(person) => {
+      //   await api.delete(`person/${person.id}`);
+      // })
 
       setBarbeques(barbeques.filter(incident => incident.id !== id));
     } catch (err) {
+      
+      console.log("error === ", err)
       alert('Erro ao deletar, tente novamente.');
     }
   }
