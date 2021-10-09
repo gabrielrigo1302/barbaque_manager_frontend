@@ -1,45 +1,15 @@
-# Getting Started with Create React App
+# Inicializando o Projeto:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Primeiramente, rode o comando `npm install` para instalar todas as dependências. Após isso, rode o comando `npm start` para iniciar o
+frontend na porta 3000.
 
-## Available Scripts
+Observação: rodar o backend do projeto antes do frontend.
 
-In the project directory, you can run:
+## Navegando no Projeto:
 
-### `yarn start`
+O aplicativo web começa rodando a página de login, onde é necessário adicionar o `email` e `senha` para realizar o login. Também é possível
+ir para a página de registro, onde é possível cadastrar um novo usuário.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Estando logado, o usuário se deparará com seus churrascos (caso já tenha algum cadastrado), um botão que redireciona para página de novo churrasco e um botão para deslogar.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Os churrascos já registrados tem dois botões, um para deletar e outro para editar que redireciona para a página de edição.
