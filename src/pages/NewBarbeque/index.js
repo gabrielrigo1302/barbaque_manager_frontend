@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
-
 import api from '../../services/api';
-
 import './styles.css';
 
-export default function NewIncident() {
+export default function NewBarbeque() {
+  const history = useHistory();
   const [date, setDate] = useState('');
   const [reason, setReason] = useState('');
   const [peopleQuantity, setPeopleQuantity] = useState('');
   const [coust, setCoust] = useState(0);
   const [people, setPeople] = useState([]);
   const [person, setPerson] = useState('');
+  const [userId,] = useState(JSON.parse(localStorage.getItem('userId')));
 
-  const history = useHistory();
-  const userId = localStorage.getItem('userId');
+  useEffect(() => {
+    if (!userId) {
+      history.push('/');
+    }
+  }, [userId, history]);
 
   const handleAddPeople = (e) => {
     e.preventDefault()
@@ -60,7 +63,6 @@ export default function NewIncident() {
 
       const barbeques = response.data.barbeque
 
-      console.log("barbeque === ", barbeques)
       let lastBarbequeId = barbeques[0].id;
 
       barbeques.map((barbeque, index) => {
@@ -70,11 +72,11 @@ export default function NewIncident() {
       })
 
       const coustPerPeople = coust / people.length
-
+      
       people.map(async (newPerson) => {
         const data = {
           barbequeId: lastBarbequeId,
-          name: newPerson,
+          name: newPerson.name,
           willDrink: false,
           isPaid: false,
           coust: coustPerPeople
@@ -85,13 +87,12 @@ export default function NewIncident() {
 
       history.push('/barbeques');
     } catch (err) {
-      console.log("error === ", err)
       alert('Erro ao cadastrar caso, tente novamente.');
     }
   }
 
   return (
-    <div className="new-incident-container">
+    <div className="new-barbeque-container">
       <row className="content">
         <form>
           <row>
@@ -117,6 +118,7 @@ export default function NewIncident() {
 
           <row>
             <input 
+              type='number'
               className='input'
               placeholder="Preço"
               value={coust}
@@ -137,10 +139,6 @@ export default function NewIncident() {
           </row>
 
           <row>
-            <button className="button" type="submit" onClick={handleNewBarbeque}>Cadastrar</button>
-          </row>
-
-          <row>
           <h1>Lista de Pessoas</h1>
           </row>
 
@@ -158,6 +156,10 @@ export default function NewIncident() {
             ))}
           </ul>
           
+          <row>
+            <button className="button" type="submit" onClick={handleNewBarbeque}>Cadastrar</button>
+          </row>
+
         </form>
       </row> 
     </div>

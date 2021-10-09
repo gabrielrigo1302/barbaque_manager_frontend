@@ -1,62 +1,67 @@
-.new-barbeque-container {
+.new-incident-container {
   width: 100%;
   max-width: 1120px;
   height: 100%;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.new-barbeque-container .content {
+.new-incident-container .content {
   width: 100%;
   padding: 96px;
   background-color: #ffd836;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.new-barbeque-container .content form {
-  display: flexbox;
+.new-incident-container .content form {
   width: 100%;
 }
 
-.new-barbeque-container .content form h1 {
+.new-incident-container .content form h1 {
   margin: 32px;
   font-size: 32px;
 }
 
-.new-barbeque-container .content form input {
+.new-incident-container .content form row {
+  display: flex;
+  justify-content: left;
   width: 100%;
+}
+
+.new-incident-container .content form row input {
+  /* width: 100%; */
   margin: 12px;
   background-color: #fff;
 }
 
-.new-barbeque-container .content form row {
+.input {
+  /* height: 360px; */
+  /* width: 900px; */
+}
+
+.select {
+  margin-top: 13px;
+  height: 60px;
+  width: 400px;
+}
+
+.inputs {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: left;
+  border-radius: 8px;
 }
 
-.new-barbeque-container .content form row input {
-  width: 100%;
-}
-
-.new-barbeque-container .content form row input .person {
-  width: 60%;
-}
-
-.new-barbeque-container .content form row button {
+.new-incident-container .content form row button {
   margin: 12px;
   width: 30%;
 }
 
-.new-barbeque-container .content form row button .person {
+.new-incident-container .content form row button .person {
   width: 100%;
   background: #000;
   border: 0;

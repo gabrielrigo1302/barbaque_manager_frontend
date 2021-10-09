@@ -20,9 +20,14 @@ export default function Logon() {
         password
        });
 
+      if (!response.data.userId) {
+        alert('E-mail ou senha errados, tente novamente');
+        return null;
+      }
+
       localStorage.setItem('userId', response.data.userId);
       history.push('/barbeques');
-    } catch (err) {
+    } catch (error) {
       alert('Falha no login, tente novamente.');
     }
   }
@@ -33,7 +38,7 @@ export default function Logon() {
         <section className="form">
           <h1>Agenda de Churras</h1>
           <form onSubmit={handleLogin}>
-            <h1>Login</h1>
+            <h1>E-mail</h1>
             <input 
               placeholder="e-mail"
               value={email}

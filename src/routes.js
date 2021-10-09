@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Barbeque from './pages/Barbeque';
 import NewBarbeque from './pages/NewBarbeque';
+import UpdateBarbeque from './pages/UpdateBarbeque';
 
 export default function Routes() {
   return (
@@ -14,6 +15,7 @@ export default function Routes() {
         <Route path="/register" component={Register} />
 
         <Route path="/barbeques/new" component={NewBarbeque} />
+        <Route path="/barbeques/update" component={UpdateBarbeque} />
         <Route path="/barbeques" component={Barbeque} />
       </Switch>
     </BrowserRouter>

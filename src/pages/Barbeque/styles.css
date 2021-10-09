@@ -1,85 +1,107 @@
-.profile-container {
+.barbeque-container {
   width: 100%;
-  max-width: 1180px;
-  padding: 0 30px;
-  margin: 32px auto;
 }
 
-.profile-container header {
+.barbeque-container row.header {
   display: flex;
-  align-items: center;
+  width: 100%;
+  background-color: #ffd836;
+  padding: 20px 0px 16px 0px;
+  border-radius: 0px 0px 16px 16px;
+  justify-content: right;
 }
 
-.profile-container header span {
+.barbeque-container row.header span {
   font-size: 20px;
-  margin-left: 24px;
 }
 
-.profile-container header img {
+.barbeque-container row.header img {
   height: 64px;
 }
 
-.profile-container header a {
+.barbeque-container row.header a {
   width: 260px;
   margin-left: auto;
   margin-top: 0;
 }
 
-.profile-container header button {
+.barbeque-container row.header button.logoff {
   height: 60px;
   width: 60px;
   border-radius: 4px;
   border: 1px solid #dcdce6;
-  background: transparent;
-  margin-left: 16px;
+  background-color: #dcdce6;
+  margin: 0px 16px 16px 16px;
   transition: border-color 0.2s;
 }
 
-.profile-container header button:hover {
+.barbeque-container row.header button.create {
+  height: 60px;
+  width: 360px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.barbeque-container row.header button:hover {
   border-color: #999;
 }
 
-.profile-container h1 {
+.barbeque-container h1 {
+  margin-left: 50px;
   margin-top: 80px;
   margin-bottom: 24px;
 }
 
-.profile-container ul {
+.barbeque-container ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 24px;
   list-style: none;
 }
 
-.profile-container ul li {
-  background: #FFF;
+.barbeque-container ul li {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  background: #fff;
   padding: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
   border-radius: 8px;
-  position: relative;
 }
 
-.profile-container ul li button {
-  position: absolute;
+.barbeque-container ul li div {
+  color: red;
+  display: flex;
+  align-content: space-between;
+}
+
+.barbeque-container ul li button {
+  /* position: absolute; */
+  background: transparent;
   right: 24px;
   top: 24px;
   border: 0;
 }
 
-.profile-container ul li button:hover {
+.barbeque-container ul li button:hover {
   opacity: 0.8;
 }
 
-.profile-container ul li strong {
+.barbeque-container ul li strong {
   display: block;
   margin-bottom: 16px;
   color: #41414d;
 }
 
-.profile-container ul li p + strong {
+.barbeque-container ul li p + strong {
   margin-top: 32px;
 }
 
-.profile-container ul li p {
+.barbeque-container ul li p {
   color: #737380;
   line-height: 21px;
   font-size: 16px;

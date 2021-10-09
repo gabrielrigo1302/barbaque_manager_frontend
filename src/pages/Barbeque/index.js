@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
-
+import { useHistory } from 'react-router-dom';
+import { FiPower, FiTrash2, FiEdit } from 'react-icons/fi';
 import api from '../../services/api';
-
 import './styles.css';
 
-export default function Profile() {
+export default function Barbeque() {
   const [barbeques, setBarbeques] = useState([]);
 
   const history = useHistory();
@@ -14,25 +12,32 @@ export default function Profile() {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
+    if (!userId) {
+      history.push('/');
+    }
+
     api.get(`barbeque/${userId}`).then(response => {
       setBarbeques(response.data.barbeque);
     })
-  }, [userId]);
+  }, [userId, history]);
 
-  async function handleDeleteIncident(id) {
+  async function handleDeleteBarbeque(id) {
     try {
       await api.delete(`barbeque/${id}`);
-      // const response = await api.get(`person/${id}`)
-
-      // response.people.map(async(person) => {
-      //   await api.delete(`person/${person.id}`);
-      // })
-
-      setBarbeques(barbeques.filter(incident => incident.id !== id));
+      setBarbeques(barbeques.filter(barbeque => barbeque.id !== id));
     } catch (err) {
-      
-      console.log("error === ", err)
       alert('Erro ao deletar, tente novamente.');
+    }
+  }
+
+  async function handleUpdateBarbeque(id) {
+    try {
+      const barbequeToUpdate = barbeques.filter(barbeque => barbeque.id === id);
+
+      localStorage.setItem('barbeque', JSON.stringify(barbequeToUpdate[0]));
+      history.push(`/barbeques/update`);
+    } catch (error) {
+      alert('Erro ao atualizar, tente novamente.');
     }
   }
 
@@ -43,27 +48,40 @@ export default function Profile() {
   }
 
   return (
-    <div className="profile-container">
-      <header>
-        <Link className="button" to="/barbeques/new">Cadastrar novo caso</Link>
-        <button onClick={handleLogout} type="button">
+    <div className="barbeque-container">
+      <row className="header">
+        <button onClick={() => {history.push('/barbeques/new');}} className="create">
+          Cadastrar novo caso
+        </button>
+        <button onClick={handleLogout} type="button" className="logoff">
           <FiPower size={18} color="#E02041" />
         </button>
-      </header>
+      </row>
 
       <h1>Casos cadastrados</h1>
 
       <ul>
         {barbeques.map(barbeque => (
           <li key={barbeque.id}>
-            <p>{barbeque.date}</p>
-            <p>{barbeque.reason}</p>
-            <p>{barbeque.peopleQuantity}</p>
-            <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(barbeque.coust)}</p>
-
-            <button onClick={() => handleDeleteIncident(barbeque.id)} type="button">
-              <FiTrash2 size={20} color="#a8a8b3" />
-            </button>
+            <row>
+              <p>Motivo: {barbeque.reason}</p>
+              <p>Data: {barbeque.date}</p>
+              <p>Quantidade de pessoas: {barbeque.peopleQuantity}</p>
+              <p>Custo: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(barbeque.coust)}</p>
+            </row>
+           
+            <row>
+              <div>
+                <button onClick={() => handleDeleteBarbeque(barbeque.id)} type="button">
+                  <FiTrash2 size={24} color="#a8a8b3" />
+                </button>
+              </div>
+              <div>
+                <button onClick={() => handleUpdateBarbeque(barbeque.id)} type="button">
+                  <FiEdit size={20} color="#a8a8b3" />
+                </button>
+              </div>
+            </row>
           </li>
         ))}
       </ul>
